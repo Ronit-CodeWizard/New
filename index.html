@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Physics Test Solutions - Answer Key</title>
-  <h2>RONNY BHAIYA</h2>
     <style>
         @page {
             size: A4;
@@ -19,6 +18,125 @@
             margin: 0 auto;
             padding: 20px;
             background: white;
+            min-height: 100vh;
+        }
+        
+        /* Enhanced interactivity for desktop */
+        @media screen and (min-width: 768px) {
+            body {
+                max-width: 800px;
+                padding: 30px;
+                box-shadow: 0 0 20px rgba(0,0,0,0.1);
+                margin: 20px auto;
+                border-radius: 8px;
+            }
+            
+            .question {
+                margin: 25px 0;
+                transition: all 0.3s ease;
+            }
+            
+            .question:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                border-radius: 8px;
+                padding: 10px;
+                background: #fafafa;
+            }
+            
+            .solution {
+                padding: 15px;
+            }
+            
+            .answer-grid {
+                grid-template-columns: repeat(5, 1fr);
+                gap: 15px;
+            }
+            
+            .answer-item:hover {
+                transform: scale(1.05);
+                box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            }
+            
+            .formula {
+                transition: all 0.3s ease;
+            }
+            
+            .formula:hover {
+                background-color: #e6f3ff;
+                transform: scale(1.02);
+            }
+        }
+        
+        /* Enhanced desktop navigation */
+        .desktop-nav {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.9);
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: none;
+        }
+        
+        @media screen and (min-width: 768px) {
+            .desktop-nav {
+                display: block;
+            }
+        }
+        
+        .nav-button {
+            display: block;
+            margin: 5px 0;
+            padding: 8px 15px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-button:hover {
+            background: #0056b3;
+            transform: translateX(5px);
+        }
+        
+        /* Tablet compatibility */
+        @media screen and (min-width: 481px) and (max-width: 767px) {
+            body {
+                max-width: 95%;
+                padding: 25px;
+            }
+            
+            .answer-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        /* Mobile compatibility */
+        @media screen and (max-width: 480px) {
+            body {
+                padding: 15px;
+                font-size: 14px;
+            }
+            
+            .header h1 {
+                font-size: 16px;
+            }
+            
+            .answer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+            
+            .formula {
+                font-size: 12px;
+                overflow-x: auto;
+            }
         }
         
         .header {
@@ -147,6 +265,14 @@
     </style>
 </head>
 <body>
+    <!-- Desktop Navigation -->
+    <div class="desktop-nav">
+        <a href="#section-a" class="nav-button">Section A</a>
+        <a href="#section-b" class="nav-button">Section B</a>
+        <a href="#answers" class="nav-button">Quick Answers</a>
+        <a href="#creator" class="nav-button">Creator Info</a>
+    </div>
+
     <div class="header">
         <h1>Atomic Energy Central School - 1, Jadugoda</h1>
         <h2>Unit Test - 1 (2024-25)</h2>
@@ -157,9 +283,13 @@
             <span>MM - 40</span>
         </div>
         <h2 style="color: #007bff; margin-top: 15px;">COMPLETE ANSWER KEY WITH SOLUTIONS</h2>
+        <div style="margin-top: 20px; padding: 10px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 5px; text-align: center;">
+            <h3 style="margin: 0; font-size: 16px;">Created by: RONNY BHAIYA</h3>
+            <p style="margin: 5px 0 0 0; font-size: 12px; opacity: 0.9;">Physics Failer</p>
+        </div>
     </div>
 
-    <div class="answer-summary">
+    <div class="answer-summary" id="answers">
         <h3>Quick Answer Reference - Section A</h3>
         <div class="answer-grid">
             <div class="answer-item"><strong>Q1:</strong> (c)</div>
@@ -175,7 +305,7 @@
         </div>
     </div>
 
-    <div class="section-title">SECTION - A (10 × 1 Mark)</div>
+    <div class="section-title" id="section-a">SECTION - A (10 × 1 Mark)</div>
 
     <div class="question">
         <div class="question-number">Q1. The number of electrons present in -1C of charge is</div>
@@ -305,7 +435,7 @@
         </div>
     </div>
 
-    <div class="section-title">SECTION - B (Descriptive Questions)</div>
+    <div class="section-title" id="section-b">SECTION - B (Descriptive Questions)</div>
 
     <div class="question">
         <div class="question-number">Q11. Like electric dipole moment, is it a scalar or vector quantity? What are the SI units?</div>
@@ -430,6 +560,10 @@
     <div style="text-align: center; margin-top: 40px; border-top: 2px solid #000; padding-top: 20px;">
         <h3>END OF ANSWER KEY</h3>
         <p><em>All solutions verified and formatted for easy reference</em></p>
+        <div style="margin-top: 20px; padding: 15px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 8px; display: inline-block;">
+            <p style="margin: 0; font-weight: bold;">📚 Created with dedication by RONNY BHAIYA</p>
+            <p style="margin: 5px 0 0 0; font-size: 12px; opacity: 0.9;">Your Physics Failer</p>
+        </div>
     </div>
 </body>
 </html>
