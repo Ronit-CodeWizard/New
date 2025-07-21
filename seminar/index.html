@@ -374,6 +374,17 @@
         <div class="slide title-slide">
             <h1>The Journey to the End of the Earth</h1>
             <h2>By Tishani Doshi</h2>
+            
+            <div style="margin: 30px 0;">
+                <a href="https://drive.google.com/drive/folders/1K3KSXY-TQnggETNc7rgX-q1GxMvmYSq1" 
+                   target="_blank" 
+                   style="display: inline-block; background: rgba(255, 255, 255, 0.9); color: #2d3436; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.1em; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); border: 2px solid rgba(255, 255, 255, 0.3);"
+                   onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(0, 0, 0, 0.3)';"
+                   onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 15px rgba(0, 0, 0, 0.2)';">
+                    📁 Access Content Materials
+                </a>
+            </div>
+            
             <div class="team-members">
                 <div class="team-member leader">Dasmat (Leader)</div>
                 <div class="team-member">Ronit</div>
@@ -589,85 +600,4 @@
                     <h3>Wildlife</h3>
                     <p>Penguins, seals, and whales</p>
                 </div>
-                <div class="aid-item">
-                    <div class="aid-icon">📊</div>
-                    <h3>Data</h3>
-                    <p>Climate statistics and graphs</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Tips Section -->
-        <div class="slide tips-section">
-            <h2>Presentation Tips</h2>
-            <div class="tips-grid">
-                <div class="tip-card">
-                    <h3>Team Coordination</h3>
-                    <ul>
-                        <li>Smooth transitions between speakers</li>
-                        <li>Consistent visual design</li>
-                        <li>Time management</li>
-                        <li>Equal participation</li>
-                    </ul>
-                </div>
-                <div class="tip-card">
-                    <h3>Individual Skills</h3>
-                    <ul>
-                        <li>Eye contact with audience</li>
-                        <li>Clear speech and pacing</li>
-                        <li>Engaging gestures</li>
-                        <li>Connect to current issues</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- Conclusion -->
-        <div class="slide conclusion-slide">
-            <h2>Remember</h2>
-            <p>"The Journey to the End of the Earth" is more than just a travel narrative. It's a call to action. Just as Antarctica represents the end of the earth geographically, it also symbolizes what could be the end of our planet's pristine beauty if we don't act now. The question Doshi leaves us with is: What will we do with the knowledge we've gained?</p>
-        </div>
-    </div>
-
-    <div class="scroll-indicator">
-        <div style="font-size: 2em; color: white;">⬇️</div>
-    </div>
-
-    <script>
-        // Smooth scrolling animation
-        document.addEventListener('DOMContentLoaded', function() {
-            const slides = document.querySelectorAll('.slide');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.animationPlayState = 'running';
-                    }
-                });
-            });
-
-            slides.forEach(slide => {
-                observer.observe(slide);
-            });
-
-            // Hide scroll indicator after scrolling
-            window.addEventListener('scroll', () => {
-                const scrollIndicator = document.querySelector('.scroll-indicator');
-                if (window.scrollY > 200) {
-                    scrollIndicator.style.opacity = '0';
-                }
-            });
-        });
-
-        // Add click animations to interactive elements
-        document.querySelectorAll('.quiz-card, .aid-item, .tip-card').forEach(card => {
-            card.addEventListener('click', function() {
-                this.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    this.style.transform = '';
-                }, 150);
-            });
-        });
-    </script>
-</body>
-</html>
+                <div c
