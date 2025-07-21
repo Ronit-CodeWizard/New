@@ -362,6 +362,29 @@
                 transform: translateX(-50%) translateY(-5px);
             }
         }
+
+        .content-access-btn {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.9);
+            color: #2d3436;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            z-index: 2;
+        }
+
+        .content-access-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            text-decoration: none;
+            color: #2d3436;
+        }
     </style>
 </head>
 <body>
@@ -378,9 +401,7 @@
             <div style="margin: 30px 0;">
                 <a href="https://drive.google.com/drive/folders/1K3KSXY-TQnggETNc7rgX-q1GxMvmYSq1" 
                    target="_blank" 
-                   style="display: inline-block; background: rgba(255, 255, 255, 0.9); color: #2d3436; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.1em; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); border: 2px solid rgba(255, 255, 255, 0.3);"
-                   onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(0, 0, 0, 0.3)';"
-                   onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 15px rgba(0, 0, 0, 0.2)';">
+                   class="content-access-btn">
                     📁 Access Content Materials
                 </a>
             </div>
@@ -595,9 +616,4 @@
                     <h3>Landscapes</h3>
                     <p>Ice formations and pristine wilderness</p>
                 </div>
-                <div class="aid-item">
-                    <div class="aid-icon">🐧</div>
-                    <h3>Wildlife</h3>
-                    <p>Penguins, seals, and whales</p>
-                </div>
-                <div c
+                <div class
