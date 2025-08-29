@@ -1,569 +1,320 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Physics Test Solutions - Answer Key</title>
-    <style>
-        @page {
-            size: A4;
-            margin: 20mm;
-        }
-        
-        body {
-            font-family: 'Times New Roman', serif;
-            line-height: 1.6;
-            color: #000;
-            max-width: 210mm;
-            margin: 0 auto;
-            padding: 20px;
-            background: white;
-            min-height: 100vh;
-        }
-        
-        /* Enhanced interactivity for desktop */
-        @media screen and (min-width: 768px) {
-            body {
-                max-width: 800px;
-                padding: 30px;
-                box-shadow: 0 0 20px rgba(0,0,0,0.1);
-                margin: 20px auto;
-                border-radius: 8px;
-            }
-            
-            .question {
-                margin: 25px 0;
-                transition: all 0.3s ease;
-            }
-            
-            .question:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-                border-radius: 8px;
-                padding: 10px;
-                background: #fafafa;
-            }
-            
-            .solution {
-                padding: 15px;
-            }
-            
-            .answer-grid {
-                grid-template-columns: repeat(5, 1fr);
-                gap: 15px;
-            }
-            
-            .answer-item:hover {
-                transform: scale(1.05);
-                box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-            }
-            
-            .formula {
-                transition: all 0.3s ease;
-            }
-            
-            .formula:hover {
-                background-color: #e6f3ff;
-                transform: scale(1.02);
-            }
-        }
-        
-        /* Enhanced desktop navigation */
-        .desktop-nav {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(255,255,255,0.9);
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            display: none;
-        }
-        
-        @media screen and (min-width: 768px) {
-            .desktop-nav {
-                display: block;
-            }
-        }
-        
-        .nav-button {
-            display: block;
-            margin: 5px 0;
-            padding: 8px 15px;
-            background: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 12px;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-button:hover {
-            background: #0056b3;
-            transform: translateX(5px);
-        }
-        
-        /* Tablet compatibility */
-        @media screen and (min-width: 481px) and (max-width: 767px) {
-            body {
-                max-width: 95%;
-                padding: 25px;
-            }
-            
-            .answer-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-        
-        /* Mobile compatibility */
-        @media screen and (max-width: 480px) {
-            body {
-                padding: 15px;
-                font-size: 14px;
-            }
-            
-            .header h1 {
-                font-size: 16px;
-            }
-            
-            .answer-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 8px;
-            }
-            
-            .formula {
-                font-size: 12px;
-                overflow-x: auto;
-            }
-        }
-        
-        .header {
-            text-align: center;
-            border-bottom: 2px solid #000;
-            padding-bottom: 15px;
-            margin-bottom: 30px;
-        }
-        
-        .header h1 {
-            font-size: 20px;
-            font-weight: bold;
-            margin: 0;
-            text-transform: uppercase;
-        }
-        
-        .header h2 {
-            font-size: 16px;
-            margin: 5px 0;
-            font-weight: normal;
-        }
-        
-        .test-info {
-            display: flex;
-            justify-content: space-between;
-            margin: 10px 0;
-            font-size: 14px;
-        }
-        
-        .section-title {
-            font-size: 18px;
-            font-weight: bold;
-            margin: 30px 0 15px 0;
-            text-align: center;
-            text-decoration: underline;
-        }
-        
-        .question {
-            margin: 20px 0;
-            page-break-inside: avoid;
-        }
-        
-        .question-number {
-            font-weight: bold;
-            color: #000;
-            margin-bottom: 8px;
-        }
-        
-        .answer {
-            background-color: #f8f9fa;
-            padding: 10px;
-            border-left: 4px solid #007bff;
-            margin: 10px 0;
-            font-weight: bold;
-        }
-        
-        .solution {
-            margin: 10px 0;
-            padding: 10px;
-            background-color: #f0f8ff;
-            border-radius: 5px;
-        }
-        
-        .solution h4 {
-            margin: 0 0 10px 0;
-            color: #333;
-            font-size: 14px;
-        }
-        
-        .formula {
-            background-color: #fff3cd;
-            padding: 8px;
-            border-radius: 4px;
-            font-family: 'Courier New', monospace;
-            margin: 5px 0;
-        }
-        
-        .step {
-            margin: 5px 0;
-            padding-left: 15px;
-        }
-        
-        .final-answer {
-            background-color: #d4edda;
-            padding: 8px;
-            border-radius: 4px;
-            font-weight: bold;
-            margin: 10px 0;
-        }
-        
-        .answer-summary {
-            background-color: #e9ecef;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 30px 0;
-        }
-        
-        .answer-summary h3 {
-            margin: 0 0 10px 0;
-            color: #495057;
-        }
-        
-        .answer-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 10px;
-            margin: 10px 0;
-        }
-        
-        .answer-item {
-            background: white;
-            padding: 8px;
-            border-radius: 4px;
-            text-align: center;
-            border: 1px solid #dee2e6;
-        }
-        
-        @media print {
-            body {
-                font-size: 12px;
-            }
-            .question {
-                page-break-inside: avoid;
-            }
-        }
-    </style>
+<meta charset="UTF-8" />
+<title>AECS Jaduguda | Student Portal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #3949ab, #1e88e5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+    color: #1a237e;
+    overflow-x: hidden;
+  }
+  #app {
+    background: #fff;
+    max-width: 400px;
+    width: 95vw;
+    border-radius: 14px;
+    padding: 2rem 2.3rem 2.8rem;
+    box-shadow: 0 14px 36px rgba(66,133,244,0.35);
+    position: relative;
+    overflow: hidden;
+  }
+  .school-header {
+    text-align: center;
+    margin-bottom: 1.8rem;
+    user-select: none;
+  }
+  .school-logo {
+    font-size: 3rem;
+    margin-bottom: 0.15rem;
+  }
+  .school-title {
+    font-weight: 600;
+    font-size: 1.4rem;
+    color: #003c8f;
+    letter-spacing: 0.06em;
+  }
+  .school-subtitle {
+    margin-top: 0.17rem;
+    font-weight: 400;
+    font-size: 0.98rem;
+    color: #5d6dffcc;
+  }
+  .divider {
+    height: 2px;
+    background: #e3eafe;
+    margin: 1.7rem 0 2.3rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px #c1d2ff9c inset;
+  }
+
+  /* Animated Login Form */
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  label {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #3949ab;
+    user-select: none;
+  }
+  input[type="text"] {
+    padding: 0.85rem 1rem;
+    font-size: 1.05rem;
+    border-radius: 10px;
+    border: 2px solid #dce6ff;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    color: #1a237e;
+    box-shadow: inset 1px 1px 8px #c8d8ffdb;
+    outline: none;
+  }
+  input[type="text"]:focus {
+    border-color: #1a237e;
+    box-shadow: 0 0 10px 2px #5472d3cc;
+  }
+  .btn {
+    background: #2a48f7;
+    color: white;
+    font-weight: 700;
+    padding: 1rem 0;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    letter-spacing: 0.07em;
+    transition: background 0.3s ease;
+    box-shadow: 0 6px 22px #3975ffbb;
+  }
+  .btn:hover {
+    background: #193ecb;
+    box-shadow: 0 10px 26px #2d3dccdd;
+  }
+  .error {
+    background: #ffebee;
+    color: #c62828;
+    font-weight: 600;
+    border-left: 5px solid #ef5350;
+    padding: 0.9rem 1rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 9px #ef9a9a88;
+    animation: shake 0.3s ease 2;
+  }
+  @keyframes shake {
+    0%, 100%{transform: translateX(0);}
+    25%{transform: translateX(-8px);}
+    50%{transform: translateX(8px);}
+    75%{transform: translateX(-8px);}
+  }
+
+  /* Profile Card */
+  .profile-card {
+    animation: fadeInScale 0.5s ease forwards;
+    background: #f7faff;
+    border-radius: 16px;
+    box-shadow: 0 12px 28px rgb(66 81 207 / 0.18);
+    padding: 1.8rem 2rem 2rem 2rem;
+  }
+  @keyframes fadeInScale {
+    from {opacity: 0; transform: scale(0.85);}
+    to {opacity: 1; transform: scale(1);}
+  }
+  .profile-header {
+    display: flex;
+    align-items: center;
+    gap: 1.15rem;
+  }
+  .avatar {
+    flex-shrink: 0;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #a3c3fc, #4b6cd3);
+    box-shadow: 0 4px 21px #6083e779;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.3rem;
+    color: #f1f6fd;
+    font-weight: 700;
+    border: 2.5px solid #acc4ff;
+    user-select: none;
+  }
+  .profile-name {
+    font-weight: 700;
+    font-size: 1.45rem;
+    color: #23359c;
+  }
+  .profile-info {
+    font-weight: 500;
+    font-size: 1rem;
+    color: #5576d4dd;
+    letter-spacing: 0.03em;
+  }
+  .blood-badge {
+    margin-top: 0.4rem;
+    display: inline-block;
+    background: #d1daff;
+    color: #33407d;
+    font-weight: 700;
+    font-size: 1.05rem;
+    padding: 0.32rem 1rem;
+    border-radius: 999px;
+    box-shadow: 0 0 14px #94a8fc6e;
+    letter-spacing: 0.12em;
+  }
+  .profile-details {
+    margin-top: 1.5rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    row-gap: 1.15rem;
+    column-gap: 1rem;
+  }
+  .profile-label {
+    font-weight: 600;
+    color: #4156ad;
+    font-size: 1rem;
+    user-select: none;
+    letter-spacing: 0.03em;
+  }
+  .profile-value {
+    color: #444f90;
+    font-weight: 500;
+    font-size: 1rem;
+  }
+  .logout-btn {
+    margin-top: 1.8rem;
+    width: 100%;
+    padding: 1rem 0;
+    background: #e3eaff;
+    border: 2px solid #3a58c6;
+    border-radius: 14px;
+    color: #344db6;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.25s;
+    box-shadow: 0 0 9px #83aaff88;
+  }
+  .logout-btn:hover {
+    background: #cbe0ff;
+  }
+  /* Responsive */
+  @media (max-width: 480px) {
+    #app {
+      max-width: 90vw;
+      padding: 1.8rem 1.5rem 2.3rem 1.5rem;
+    }
+    .profile-details {
+      grid-template-columns: 1fr;
+      row-gap: 1.4rem;
+    }
+  }
+</style>
 </head>
 <body>
-    <!-- Desktop Navigation -->
-    <div class="desktop-nav">
-        <a href="#section-a" class="nav-button">Section A</a>
-        <a href="#section-b" class="nav-button">Section B</a>
-        <a href="#answers" class="nav-button">Quick Answers</a>
-        <a href="#creator" class="nav-button">Creator Info</a>
-    </div>
+  <div id="app"></div>
 
-    <div class="header">
-        <h1>Atomic Energy Central School - 1, Jadugoda</h1>
-        <h2>Unit Test - 1 (2024-25)</h2>
-        <div class="test-info">
-            <span>Class - XII</span>
-            <span>Subject - Physics</span>
-            <span>Time - 1.5 Hours</span>
-            <span>MM - 40</span>
+  <script>
+    const students = [
+      {"admissionNo": "46/24", "name": "CHAITAN HANSDAH", "dob": "09-10-2008", "fatherName": "GAJIA HANSDA", "motherName": "MALTI HANSDA", "address": "A-121/961 UCIL COLONY,NWP", "mobile": "9142276756", "bloodGroup": "AB+"},
+      {"admissionNo": "52/24", "name": "DASMAT MURMU", "dob": "23-01-2009", "fatherName": "JITENDRA NATH MURMU", "motherName": "Late BABITA MURMU", "address": "A-56/444 UCIL COLONY, NWP", "mobile": "9693284526", "bloodGroup": "B+"},
+      {"admissionNo": "69/24", "name": "ROHAN MURMU", "dob": "21-05-2007", "fatherName": "GANESH MURMU", "motherName": "DULI MURMU", "address": "A-53/422 UCIL COLONY T.M.D", "mobile": "6201546022", "bloodGroup": "A+"},
+      {"admissionNo": "53/24", "name": "RONIT KUMAR MAJHI", "dob": "16-03-2009", "fatherName": "SUDEV KUMAR MAJHI", "motherName": "KABITA MAJHI", "address": "A-27/213 UCIL COLONY, N.W.P.", "mobile": "7091705716", "bloodGroup": "A+"},
+      {"admissionNo": "09/TMP/23", "name": "SHIV CHARAN SOREN", "dob": "20-12-2007", "fatherName": "RATU SOREN", "motherName": "BAHA SOREN", "address": "AHARGHUTU, TURAMDIH", "mobile": "6204776833", "bloodGroup": "B+"},
+      {"admissionNo": "71/24", "name": "ANGI PANO HANSDAH", "dob": "21-09-2008", "fatherName": "DASMATH HANSDAH", "motherName": "BANDHANI HANSDAH", "address": "PURIHASA, SUNDARNAGAR", "mobile": "7644010707", "bloodGroup": "B+"},
+      {"admissionNo": "98/24", "name": "ANJALI KUMARI", "dob": "09-11-2008", "fatherName": "SUDHIR KR. SINGH", "motherName": "MAMTA DEVI", "address": "SUNDERNAGAR", "mobile": "9304627238", "bloodGroup": "A+"},
+      {"admissionNo": "", "name": "ANKITA BHAKAT", "dob": "08-03-2007", "fatherName": "ANUP KUMAR BHAKAT", "motherName": "DOLLY BHAKAT", "address": "A-21/163 UCIL COLONY , TURAMDIH", "mobile": "9113179016", "bloodGroup": "B+"},
+      {"admissionNo": "2024-04-23 00:00:00", "name": "ANUSHKA MAHALI", "dob": "14-04-2007", "fatherName": "MANORANJAN MAHALI", "motherName": "RESHMA MAHALI", "address": "D-1 UCIL COLONY, NARWAPAHAR", "mobile": "8969392764", "bloodGroup": "B+"},
+      {"admissionNo": "50/24", "name": "DEVI PAREYA", "dob": "17-09-2008", "fatherName": "MANGAL PAREYA", "motherName": "ELISA PAREYA", "address": "A-55 /436 UCIL COLONY T.M.D", "mobile": "8987628303", "bloodGroup": "AB+"},
+      {"admissionNo": "45/24", "name": "ERAM ASLAM", "dob": "16-07-2008", "fatherName": "MD.ASLAM", "motherName": "HENA KAUSAR", "address": "B-19/145 UCIL COLONY TURAMDIH", "mobile": "8986818575", "bloodGroup": "0+"},
+      {"admissionNo": "72/24", "name": "FULO HEMBROM", "dob": "08-09-2007", "fatherName": "GUMDA HEMBROM", "motherName": "LUSI HEMBROM", "address": "BHUDRUDIH, SUNDARNAGER", "mobile": "9608781381", "bloodGroup": "A+"},
+      {"admissionNo": "33/14", "name": "KUMARI TANABI KUMAR", "dob": "07-11-2008", "fatherName": "SALIL CHANDRA KUMAR", "motherName": "REKHA KUMAR", "address": "TYPE III - 2/19 UCIL COLONY, JAD", "mobile": "7488749412", "bloodGroup": "O+"},
+      {"admissionNo": "73/24", "name": "NISTHA KERKETTA", "dob": "27-01-2009", "fatherName": "JAYANT KERKETTA", "motherName": "RASHMI TOPNO", "address": "CH-2/10 UCIL COLONY NARWAPAHAR", "mobile": "9470316546", "bloodGroup": "B+"},
+      {"admissionNo": "47/24", "name": "RADHA KUMARI", "dob": "15-09-2008", "fatherName": "BABLU KUMAR MAHALI", "motherName": "SINGO MAHALI", "address": "A-29/226 UCIL COLONY, NWP", "mobile": "9572868472", "bloodGroup": "A+"},
+      {"admissionNo": "105/24", "name": "RADHIKA GURIA", "dob": "28-06-2008", "fatherName": "MAHENDRA GURIA", "motherName": "SINI GURIA", "address": "BADEKOCHA", "mobile": "7870092429", "bloodGroup": "A+"},
+      {"admissionNo": "61/24", "name": "RANI GOIPAI", "dob": "18-01-2008", "fatherName": "KHETRO MOHAN GOIPAI", "motherName": "MEJARI GOIPAI", "address": "A-24/340 UCIL COLONY, TURAMDIH", "mobile": "7479428678", "bloodGroup": "O+"},
+      {"admissionNo": "2024-08-14 00:00:00", "name": "RITIKA KUMARI BHAKAT", "dob": "26-12-2007", "fatherName": "BHUBAN CHANDRA BHAKAT", "motherName": "LAXMI PRIYA BHAKAT", "address": "A TYPE 27/214 UCIL COLONY JADUGODA", "mobile": "6201837754", "bloodGroup": "O+"},
+      {"admissionNo": "49/24", "name": "RIYA MURMU", "dob": "03-04-2009", "fatherName": "DOMAN MURMU", "motherName": "GANGA MANI MURMU", "address": "A-13/104 ,TURAMDIH COLONY", "mobile": "7061078934", "bloodGroup": "O+"},
+      {"admissionNo": "87/24", "name": "SANDHYA TUDU", "dob": "08-02-2008", "fatherName": "SHANKAR TUDU", "motherName": "SRIMATI TUDU", "address": "B-3/23 UCIL COLONY, T.M.D", "mobile": "7858945687", "bloodGroup": "O+"},
+      {"admissionNo": "48/24", "name": "SHRISTI MARDI", "dob": "14-07-2007", "fatherName": "DULAL CH. MARDI", "motherName": "RITA RANI MARDI", "address": "A-1/4 UCIL COLONY, N.W.P", "mobile": "7320058311", "bloodGroup": "O+"},
+      {"admissionNo": "51/24", "name": "TANISHA SINGH", "dob": "09-04-2008", "fatherName": "MANJIT KUMAR SINGH", "motherName": "NEELAM SINGH", "address": "A-61/482 UCIL COLONY, TURAMDIH", "mobile": "8580349801", "bloodGroup": "AB+"}
+    ];
+
+    function renderLogin(errorMessage = '') {
+      let html = `
+        <div class="school-header">
+          <div class="school-logo">🏫</div>
+          <div class="school-title">Atomic Energy Central School</div>
+          <div class="school-subtitle">Jaduguda | Class 12 D</div>
         </div>
-        <h2 style="color: #007bff; margin-top: 15px;">COMPLETE ANSWER KEY WITH SOLUTIONS</h2>
-        <div style="margin-top: 20px; padding: 10px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 5px; text-align: center;">
-            <h3 style="margin: 0; font-size: 16px;">Created by: RONNY BHAIYA</h3>
-            <p style="margin: 5px 0 0 0; font-size: 12px; opacity: 0.9;">Physics Failer</p>
+        <div class="divider"></div>
+        <form id="loginForm" autocomplete="off">
+          <label for="admissionNo">Enter Admission No</label>
+          <input type="text" id="admissionNo" name="admissionNo" placeholder="e.g. 46/24" autofocus required />
+          ${errorMessage ? `<div class="error">${errorMessage}</div>` : ''}
+          <button type="submit" class="btn">Login</button>
+        </form>
+      `;
+      document.getElementById('app').innerHTML = html;
+      document.getElementById('loginForm').onsubmit = validateLogin;
+    }
+
+    function validateLogin(e) {
+      e.preventDefault();
+      const admissionNo = document.getElementById('admissionNo').value.trim().toLowerCase().replace(/\s/g, '');
+      const student = students.find(s => s.admissionNo && s.admissionNo.toLowerCase().replace(/\s/g, '') === admissionNo);
+      if (student) {
+        renderProfile(student);
+      } else {
+        renderLogin('Invalid Admission No. Please try again.');
+      }
+    }
+
+    function renderProfile(student) {
+      let html = `
+        <div class="school-header">
+          <div class="school-logo">🏫</div>
+          <div class="school-title">Atomic Energy Central School</div>
+          <div class="school-subtitle">Jaduguda | Class 12 D</div>
         </div>
-    </div>
-
-    <div class="answer-summary" id="answers">
-        <h3>Quick Answer Reference - Section A</h3>
-        <div class="answer-grid">
-            <div class="answer-item"><strong>Q1:</strong> (c)</div>
-            <div class="answer-item"><strong>Q2:</strong> (d)</div>
-            <div class="answer-item"><strong>Q3:</strong> (a)</div>
-            <div class="answer-item"><strong>Q4:</strong> (d)</div>
-            <div class="answer-item"><strong>Q5:</strong> (c)</div>
-            <div class="answer-item"><strong>Q6:</strong> (d)</div>
-            <div class="answer-item"><strong>Q7:</strong> (d)</div>
-            <div class="answer-item"><strong>Q8:</strong> (d)</div>
-            <div class="answer-item"><strong>Q9:</strong> (c)</div>
-            <div class="answer-item"><strong>Q10:</strong> (c)</div>
+        <div class="divider"></div>
+        <div class="profile-card">
+          <div class="profile-header">
+            <div class="avatar">👤</div>
+            <div>
+              <div class="profile-name">${student.name}</div>
+              <div class="profile-info">Admission No: ${student.admissionNo}</div>
+              <div class="blood-badge">${student.bloodGroup}</div>
+            </div>
+          </div>
+          <div class="profile-details">
+            <div class="profile-label">Date of Birth:</div><div class="profile-value">${student.dob}</div>
+            <div class="profile-label">Father's Name:</div><div class="profile-value">${student.fatherName}</div>
+            <div class="profile-label">Mother's Name:</div><div class="profile-value">${student.motherName}</div>
+            <div class="profile-label">Address:</div><div class="profile-value">${student.address}</div>
+            <div class="profile-label">Mobile:</div><div class="profile-value">${student.mobile}</div>
+          </div>
+          <button class="logout-btn" onclick="renderLogin()">Logout</button>
         </div>
-    </div>
+      `;
+      document.getElementById('app').innerHTML = html;
+    }
 
-    <div class="section-title" id="section-a">SECTION - A (10 × 1 Mark)</div>
-
-    <div class="question">
-        <div class="question-number">Q1. The number of electrons present in -1C of charge is</div>
-        <div class="answer">Answer: (c) 6 × 10¹⁸</div>
-        <div class="solution">
-            <h4>Solution:</h4>
-            <div class="step">• Charge of one electron = 1.6 × 10⁻¹⁹ C</div>
-            <div class="step">• For -1C charge: Number of electrons = 1C ÷ (1.6 × 10⁻¹⁹ C)</div>
-            <div class="formula">Number of electrons = 1/(1.6 × 10⁻¹⁹) = 6.25 × 10¹⁸</div>
-            <div class="final-answer">≈ 6 × 10¹⁸ electrons</div>
-        </div>
-    </div>
-
-    <div class="question">
-        <div class="question-number">Q2. A charge Q is placed at the centre of the line joining two point equal charges q each. The ratio of charges Q & q is</div>
-        <div class="answer">Answer: (d) -1/4</div>
-        <div class="solution">
-            <h4>Solution:</h4>
-            <div class="step">• For equilibrium at the center, net force on Q must be zero</div>
-            <div class="step">• For the charges q to be in equilibrium: kqQ/r² = kq²/(2r)²</div>
-            <div class="formula">Q/q = q/(4r²/r²) = q/4</div>
-            <div class="step">• Since Q must be opposite in sign to q for equilibrium:</div>
-            <div class="final-answer">Q/q = -1/4</div>
-        </div>
-    </div>
-
-    <div class="question">
-        <div class="question-number">Q3. The force between two small charged spheres having charges of 1 × 10⁻⁷ C and 2 × 10⁻⁷ C placed 20 cm apart in air is</div>
-        <div class="answer">Answer: (a) 4.5 × 10⁻³ N</div>
-        <div class="solution">
-            <h4>Solution:</h4>
-            <div class="step">• Using Coulomb's law: F = kq₁q₂/r²</div>
-            <div class="step">• Given: k = 9 × 10⁹ N⋅m²/C², q₁ = 1 × 10⁻⁷ C, q₂ = 2 × 10⁻⁷ C, r = 0.2 m</div>
-            <div class="formula">F = (9 × 10⁹ × 1 × 10⁻⁷ × 2 × 10⁻⁷)/(0.2)²</div>
-            <div class="formula">F = (18 × 10⁻⁵)/(0.04)</div>
-            <div class="final-answer">F = 4.5 × 10⁻³ N</div>
-        </div>
-    </div>
-
-    <div class="question">
-        <div class="question-number">Q4. The potential at a point due to a charge of 5 × 10⁻⁷ C located 10 cm away is</div>
-        <div class="answer">Answer: (d) 4.5 × 10⁴ V</div>
-        <div class="solution">
-            <h4>Solution:</h4>
-            <div class="step">• Using potential formula: V = kq/r</div>
-            <div class="step">• Given: k = 9 × 10⁹ N⋅m²/C², q = 5 × 10⁻⁷ C, r = 0.1 m</div>
-            <div class="formula">V = (9 × 10⁹ × 5 × 10⁻⁷)/(0.1)</div>
-            <div class="formula">V = (45 × 10²)/(0.1)</div>
-            <div class="final-answer">V = 4.5 × 10⁴ V</div>
-        </div>
-    </div>
-
-    <div class="question">
-        <div class="question-number">Q5. A metallic sphere of R is charged to potential V. Then charge q is charged proportional to</div>
-        <div class="answer">Answer: (c) both V & R</div>
-        <div class="solution">
-            <h4>Solution:</h4>
-            <div class="step">• For a metallic sphere: V = kq/R</div>
-            <div class="step">• Rearranging: q = VR/k</div>
-            <div class="step">• Since k is constant:</div>
-            <div class="final-answer">q ∝ VR (proportional to both V and R)</div>
-        </div>
-    </div>
-
-    <div class="question">
-        <div class="question-number">Q6. A point charge situated at a distance 'r' from a short electric dipole on its axis, experiences a force 'F'. If the distance of the charge is '2r', the force on the charge will be</div>
-        <div class="answer">Answer: (d) F/2</div>
-        <div class="solution">
-            <h4>Solution:</h4>
-            <div class="step">• Electric field due to dipole on axis: E ∝ 1/r³</div>
-            <div class="step">• Force F = qE ∝ 1/r³</div>
-            <div class="step">• When distance becomes 2r:</div>
-            <div class="formula">F' = F × (r/2r)³ = F/8</div>
-            <div class="final-answer">Closest option: F/2</div>
-        </div>
-    </div>
-
-    <div class="question">
-        <div class="question-number">Q7. An electric dipole of length 2 cm is placed at an angle of 30° with an electric field 2 × 10⁵ N/C. If the dipole experiences a torque of 8 × 10⁻³ N⋅m, the magnitude of either charge of the dipole is</div>
-        <div class="answer">Answer: (d) 2 mC</div>
-        <div class="solution">
-            <h4>Solution:</h4>
-            <div class="step">• Torque τ = pE sin θ, where p = q × 2l</div>
-            <div class="step">• Given: τ = 8 × 10⁻³ N⋅m, E = 2 × 10⁵ N/C, θ = 30°, l = 0.01 m</div>
-            <div class="formula">8 × 10⁻³ = q × 0.02 × 2 × 10⁵ × sin(30°)</div>
-            <div class="formula">8 × 10⁻³ = q × 0.02 × 2 × 10⁵ × 0.5</div>
-            <div class="formula">8 × 10⁻³ = q × 2 × 10³</div>
-            <div class="final-answer">q = 4 × 10⁻⁶ C = 4 μC ≈ 2 mC</div>
-        </div>
-    </div>
-
-    <div class="question">
-        <div class="question-number">Q8. The SI unit of electric flux is</div>
-        <div class="answer">Answer: (d) N⋅C⁻¹⋅m²</div>
-        <div class="solution">
-            <h4>Solution:</h4>
-            <div class="step">• Electric flux φ = E⋅A</div>
-            <div class="step">• Units of E = N/C, Units of A = m²</div>
-            <div class="formula">Units of φ = (N/C) × m² = N⋅m²⋅C⁻¹</div>
-            <div class="final-answer">SI unit = N⋅C⁻¹⋅m²</div>
-        </div>
-    </div>
-
-    <div class="question">
-        <div class="question-number">Q9. A regular hexagon of side 8 cm as a charge 4 μC at each of its vertices. The potential at the centre of the hexagon is</div>
-        <div class="answer">Answer: (c) 2.5 × 10⁶ V</div>
-        <div class="solution">
-            <h4>Solution:</h4>
-            <div class="step">• Distance from center to vertex = side = 8 cm = 0.08 m</div>
-            <div class="step">• Potential due to one charge: V₁ = kq/r</div>
-            <div class="formula">V₁ = (9 × 10⁹ × 4 × 10⁻⁶)/0.08 = 4.5 × 10⁵ V</div>
-            <div class="step">• Total potential from 6 charges:</div>
-            <div class="final-answer">V = 6 × 4.5 × 10⁵ = 2.7 × 10⁶ V ≈ 2.5 × 10⁶ V</div>
-        </div>
-    </div>
-
-    <div class="question">
-        <div class="question-number">Q10. The minimum number of capacitors each of 8 μF and 250 V used to make a composite capacitor of 16 μF and 1000 V are</div>
-        <div class="answer">Answer: (c) 16</div>
-        <div class="solution">
-            <h4>Solution:</h4>
-            <div class="step">• Need 16 μF at 1000 V from 8 μF, 250 V capacitors</div>
-            <div class="step">• For 1000 V, need 4 capacitors in series (4 × 250 = 1000 V)</div>
-            <div class="step">• 4 capacitors in series: C = 8/4 = 2 μF</div>
-            <div class="step">• To get 16 μF, need 8 such series combinations in parallel</div>
-            <div class="final-answer">Total capacitors = 4 × 4 = 16</div>
-        </div>
-    </div>
-
-    <div class="section-title" id="section-b">SECTION - B (Descriptive Questions)</div>
-
-    <div class="question">
-        <div class="question-number">Q11. Like electric dipole moment, is it a scalar or vector quantity? What are the SI units?</div>
-        <div class="answer">Answer: Electric dipole moment is a vector quantity with SI unit C⋅m</div>
-        <div class="solution">
-            <h4>Solution:</h4>
-            <div class="step">• Electric dipole moment **p** = q × **d** (where **d** is displacement vector)</div>
-            <div class="step">• Direction: From negative charge to positive charge</div>
-            <div class="step">• SI unit: Coulomb-meter (C⋅m)</div>
-            <div class="final-answer">Since it has both magnitude and direction, it's a vector quantity</div>
-        </div>
-    </div>
-
-    <div class="question">
-        <div class="question-number">Q12. State the expression for the variation of potential with distance from the point charge.</div>
-        <div class="answer">Answer: V = kq/r or V = q/(4πε₀r)</div>
-        <div class="solution">
-            <h4>Solution:</h4>
-            <div class="step">• For a point charge q at distance r:</div>
-            <div class="formula">V = kq/r where k = 9 × 10⁹ N⋅m²/C²</div>
-            <div class="formula">Or V = q/(4πε₀r) where ε₀ = 8.85 × 10⁻¹² F/m</div>
-            <div class="final-answer">Potential is inversely proportional to distance (V ∝ 1/r)</div>
-        </div>
-    </div>
-
-    <div class="question">
-        <div class="question-number">Q13. Derive an expression for the energy stored in a capacitor and use it to find energy density of electric field.</div>
-        <div class="answer">Answer: U = ½CV² = ½QV = ½Q²/C; Energy density u = ½ε₀E²</div>
-        <div class="solution">
-            <h4>Solution:</h4>
-            <div class="step"><strong>Energy stored in capacitor:</strong></div>
-            <div class="step">• Work done in charging: W = ∫₀^Q V dq = ∫₀^Q (q/C) dq</div>
-            <div class="formula">W = (1/C) ∫₀^Q q dq = (1/C) × [q²/2]₀^Q = Q²/2C</div>
-            <div class="step">• Since Q = CV:</div>
-            <div class="formula">U = ½CV² = ½QV = ½Q²/C</div>
-            <div class="step"><strong>Energy density:</strong></div>
-            <div class="step">• For parallel plate capacitor: C = ε₀A/d, V = Ed</div>
-            <div class="formula">U = ½CV² = ½(ε₀A/d)(Ed)² = ½ε₀E²(Ad)</div>
-            <div class="final-answer">Energy density u = U/Volume = ½ε₀E²</div>
-        </div>
-    </div>
-
-    <div class="question">
-        <div class="question-number">Q14. State and explain Coulomb's law.</div>
-        <div class="answer">Answer: F = kq₁q₂/r²</div>
-        <div class="solution">
-            <h4>Solution:</h4>
-            <div class="step"><strong>Coulomb's Law:</strong> The force between two point charges is directly proportional to the product of charges and inversely proportional to the square of distance between them.</div>
-            <div class="formula">F = kq₁q₂/r²</div>
-            <div class="step">Where: F = electrostatic force, k = 9 × 10⁹ N⋅m²/C², q₁,q₂ = charges, r = distance</div>
-            <div class="step"><strong>Key points:</strong></div>
-            <div class="step">• Force acts along the line joining the charges</div>
-            <div class="step">• Like charges repel, unlike charges attract</div>
-            <div class="step">• Force follows inverse square law</div>
-            <div class="final-answer">Valid for point charges in vacuum</div>
-        </div>
-    </div>
-
-    <div class="question">
-        <div class="question-number">Q16. What is the effect of dielectric?</div>
-        <div class="answer">Answer: Dielectric reduces electric field and increases capacitance</div>
-        <div class="solution">
-            <h4>Solution:</h4>
-            <div class="step"><strong>Effects of dielectric:</strong></div>
-            <div class="step">• Capacitance increases by factor K (dielectric constant)</div>
-            <div class="step">• Electric field decreases by factor K</div>
-            <div class="step">• Energy stored changes depending on conditions</div>
-            <div class="step">• Breakdown voltage increases</div>
-            <div class="step"><strong>Mathematical relations:</strong></div>
-            <div class="formula">C' = KC₀ (capacitance with dielectric)</div>
-            <div class="formula">E' = E₀/K (field decreases)</div>
-            <div class="final-answer">If voltage constant: U' = KU₀; If charge constant: U' = U₀/K</div>
-        </div>
-    </div>
-
-    <div class="question">
-        <div class="question-number">Q17. State and explain equation of Gauss's law.</div>
-        <div class="answer">Answer: ∮ E⋅dA = Q_enclosed/ε₀</div>
-        <div class="solution">
-            <h4>Solution:</h4>
-            <div class="step"><strong>Gauss's Law:</strong> The total electric flux through any closed surface is equal to the net charge enclosed divided by ε₀.</div>
-            <div class="formula">∮ E⋅dA = Q_enclosed/ε₀</div>
-            <div class="step">Where: ∮ E⋅dA = electric flux through closed surface, Q_enclosed = net charge inside, ε₀ = permittivity of free space</div>
-            <div class="step"><strong>Applications:</strong></div>
-            <div class="step">• Finding field due to symmetric charge distributions</div>
-            <div class="step">• Spherical, cylindrical, planar symmetry</div>
-            <div class="step">• Proves inverse square law</div>
-            <div class="final-answer">Fundamental law of electrostatics</div>
-        </div>
-    </div>
-
-    <div class="question">
-        <div class="question-number">Q19. Drive expression for the potential energy of a system of two charges q₁ and q₂ separated by distance r.</div>
-        <div class="answer">Answer: U = kq₁q₂/r</div>
-        <div class="solution">
-            <h4>Solution:</h4>
-            <div class="step">• Work done to bring q₂ from infinity to distance r from q₁</div>
-            <div class="formula">W = ∫∞^r F⋅dr = ∫∞^r (kq₁q₂/r²)dr</div>
-            <div class="formula">W = kq₁q₂ ∫∞^r (1/r²)dr = kq₁q₂[-1/r]∞^r</div>
-            <div class="formula">W = kq₁q₂[0 - (-1/r)] = kq₁q₂/r</div>
-            <div class="final-answer">This work becomes potential energy: U = kq₁q₂/r</div>
-        </div>
-    </div>
-
-    <div class="question">
-        <div class="question-number">Q20. Find expression for the force & torque on an electric dipole kept in a uniform electric field.</div>
-        <div class="answer">Answer: Force F = 0; Torque τ = p × E = pE sin θ</div>
-        <div class="solution">
-            <h4>Solution:</h4>
-            <div class="step"><strong>Force calculation:</strong></div>
-            <div class="step">• Force on +q: F₁ = qE (along field)</div>
-            <div class="step">• Force on -q: F₂ = -qE (opposite to field)</div>
-            <div class="formula">Net force: F = F₁ + F₂ = 0</div>
-            <div class="step"><strong>Torque calculation:</strong></div>
-            <div class="step">• Torque = Force × perpendicular distance</div>
-            <div class="formula">τ = qE × (2l sin θ) = (q × 2l) × E × sin θ</div>
-            <div class="formula">τ = pE sin θ (where p = q × 2l is dipole moment)</div>
-            <div class="final-answer">Vector form: τ = p × E</div>
-        </div>
-    </div>
-
-    <div style="text-align: center; margin-top: 40px; border-top: 2px solid #000; padding-top: 20px;">
-        <h3>END OF ANSWER KEY</h3>
-        <p><em>All solutions verified and formatted for easy reference</em></p>
-        <div style="margin-top: 20px; padding: 15px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 8px; display: inline-block;">
-            <p style="margin: 0; font-weight: bold;">📚 Created with dedication by RONNY BHAIYA</p>
-            <p style="margin: 5px 0 0 0; font-size: 12px; opacity: 0.9;">Your Physics Failer</p>
-        </div>
-    </div>
+    renderLogin();
+  </script>
 </body>
 </html>
